@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anitha Damarla | QA Engineer Portfolio</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --success: #27ae60;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .nav {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .hero .title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .hero .subtitle {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            color: var(--primary);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--secondary);
+            position: relative;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--secondary);
+            transition: transform 0.3s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .metric-number {
+            font-size: 2.8em;
+            font-weight: bold;
+            color: var(--secondary);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .skill-box h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 8px 0;
+            color: #555;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .skill-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .experience-timeline:before {
+            content: "";
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--secondary);
+        }
+
+        .experience-card {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .experience-card:hover {
+            background: #e8f4f8;
+            transform: translateX(5px);
+        }
+
+        .experience-card:before {
+            content: "";
+            position: absolute;
+            left: -33px;
+            top: 30px;
+            width: 12px;
+            height: 12px;
+            background: var(--secondary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--secondary);
+        }
+
+        .job-header {
+            margin-bottom: 15px;
+        }
+
+        .job-title {
+            font-size: 1.4em;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .company-name {
+            font-size: 1.1em;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .duration {
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        .responsibilities {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .responsibilities li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+        }
+
+        .responsibilities li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 4px solid var(--secondary);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        .project-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .project-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .cert-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .cert-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.2);
+        }
+
+        .cert-badge {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .cert-card h3 {
+            color: var(--primary);
+            font-size: 1em;
+            margin-bottom: 8px;
+        }
+
+        .cert-card p {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .education-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--success);
+        }
+
+        .degree {
+            font-size: 1.3em;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .institution {
+            color: var(--secondary);
+            font-size: 1.05em;
+            margin-bottom: 5px;
+        }
+
+        .contact-section {
+            background: var(--primary);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            padding: 20px;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--secondary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            background: white;
+            margin-top: 40px;
+        }
+
+        .award-badge {
+            display: inline-block;
+            background: #fff3cd;
+            color: #856404;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 10px 5px;
+            border: 1px solid #ffc107;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2em; }
+            .hero .title { font-size: 1.2em; }
+            .nav-links { display: none; }
+            .section { padding: 25px; }
+            .experience-timeline { padding-left: 25px; }
+            .metrics { grid-template-columns: 1fr; }
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .highlight h3 {
+            color: var(--primary);
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <h2>Anitha Damarla</h2>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Anitha Damarla</h1>
+        <p class="title">QA Engineer | SDET | Automation & Manual Testing Expert</p>
+        <p class="subtitle">
+            Versatile Quality Assurance professional with 2+ years of experience spanning automation testing, 
+            manual testing, CI/CD integration, and comprehensive quality assurance. Specialized in delivering 
+            robust testing solutions across web, mobile, API, and cloud-native applications.
+        </p>
+        <div class="award-badge">🏆 Client Trailblazer Award Winner (Q3 2024)</div>
+        <div class="btn-group">
+            <a href="#contact" class="btn btn-primary">Get In Touch</a>
+            <a href="https://linkedin.com/in/anitha0313" target="_blank" class="btn btn-outline">LinkedIn Profile</a>
+            <a href="https://github.com/Anitha-Arun" target="_blank" class="btn btn-outline">GitHub</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="metrics">
+            <div class="metric-card">
+                <span class="metric-number">2+</span>
+                <span class="metric-label">Years of Experience</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-number">95%</span>
+                <span class="metric-label">Automation Coverage Achieved</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-number">30%</span>
+                <span class="metric-label">Faster Release Cycles</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-number">50%</span>
+                <span class="metric-label">Reduced Testing Time</span>
+            </div>
+        </div>
+
+        <section id="about" class="section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p style="font-size: 1.1em; line-height: 1.8; color: #555;">
+                Experienced QA Engineer and SDET with a comprehensive skill set covering both automated and manual testing methodologies. 
+                Proven expertise in designing and implementing test automation frameworks using Selenium, Cucumber BDD, Robot Framework, 
+                and Playwright. Strong background in CI/CD pipelines, API testing, performance testing, and cloud-native application testing. 
+                Certified Azure DevOps Engineer with hands-on experience in Agile/Scrum environments, delivering high-quality software across 
+                web, mobile, and IoT platforms. Recognized for innovation with Client Trailblazer Award for automation excellence.
+            </p>
+        </section>
+
+        <section id="skills" class="section">
+            <h2 class="section-title">Technical Expertise</h2>
+            
+            <div class="skills-container">
+                <div class="skill-box">
+                    <h3>🤖 Test Automation</h3>
+                    <ul class="skill-list">
+                        <li>Selenium WebDriver</li>
+                        <li>Cucumber BDD Framework</li>
+                        <li>Robot Framework</li>
+                        <li>Playwright</li>
+                        <li>TestNG & PyTest</li>
+                        <li>Appium (Mobile)</li>
+                        <li>Page Object Model (POM)</li>
+                        <li>Data-Driven Testing</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>📋 Manual Testing</h3>
+                    <ul class="skill-list">
+                        <li>Test Planning & Strategy</li>
+                        <li>Test Case Design</li>
+                        <li>Functional Testing</li>
+                        <li>Regression Testing</li>
+                        <li>Integration Testing</li>
+                        <li>UAT Testing</li>
+                        <li>Exploratory Testing</li>
+                        <li>Defect Management</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>💻 Programming Languages</h3>
+                    <ul class="skill-list">
+                        <li>Java</li>
+                        <li>Python</li>
+                        <li>JavaScript</li>
+                        <li>SQL</li>
+                        <li>Shell Scripting</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>🔌 API & Performance Testing</h3>
+                    <ul class="skill-list">
+                        <li>Postman</li>
+                        <li>REST API Testing</li>
+                        <li>Apache JMeter</li>
+                        <li>Load Testing</li>
+                        <li>Stress Testing</li>
+                        <li>Performance Monitoring</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>🚀 CI/CD & DevOps</h3>
+                    <ul class="skill-list">
+                        <li>Jenkins</li>
+                        <li>Azure DevOps & Pipelines</li>
+                        <li>GitHub Actions</li>
+                        <li>Docker</li>
+                        <li>Kubernetes (K8s, K3s)</li>
+                        <li>Ansible</li>
+                        <li>Helm</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>☁️ Cloud & Platforms</h3>
+                    <ul class="skill-list">
+                        <li>Microsoft Azure</li>
+                        <li>Azure Kubernetes Service</li>
+                        <li>Linux (Ubuntu)</li>
+                        <li>Embedded Systems</li>
+                        <li>IoT Platforms</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>🗄️ Databases</h3>
+                    <ul class="skill-list">
+                        <li>MySQL</li>
+                        <li>PostgreSQL</li>
+                        <li>MongoDB</li>
+                        <li>SQL Server</li>
+                        <li>Database Testing</li>
+                        <li>ETL Testing</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>🛠️ Tools & Methodologies</h3>
+                    <ul class="skill-list">
+                        <li>JIRA</li>
+                        <li>Azure Boards</li>
+                        <li>Git & GitHub</li>
+                        <li>Agile/Scrum</li>
+                        <li>Allure Reports</li>
+                        <li>Extent Reports</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="experience-timeline">
+                <div class="experience-card">
+                    <div class="job-header">
+                        <h3 class="job-title">Engineer - Software Test and Release</h3>
+                        <p class="company-name">Sasken Technologies Limited (Client: ABB)</p>
+                        <p class="duration">May 2025 – Nov 2025 | Bangalore, Karnataka</p>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Automated non-UI test cases for IIoT platforms (EdgeBase, EdgeAI) using Python and Robot Framework, significantly reducing regression testing effort</li>
+                        <li>Extensively worked on Linux-based embedded and edge devices, performing system-level testing, log analysis, and service debugging</li>
+                        <li>Managed configuration, package installation, daemon handling, and system health validation on Ubuntu Linux environments</li>
+                        <li>Validated cloud-native deployments using Docker, K3s, MicroK8s, Helm, and AKSEE across staging and production clusters</li>
+                        <li>Owned complete QA lifecycle—test planning, design, execution, defect tracking, and release sign-off resulting in 30% faster release cycles</li>
+                        <li>Performed comprehensive API testing for REST services using Postman and Python scripts</li>
+                        <li>Implemented automated deployment validation scripts reducing manual verification time by 50%</li>
+                        <li>Collaborated with DevOps team to optimize CI/CD pipelines in Jenkins and Azure DevOps</li>
+                        <li>Executed risk-based, smoke, sanity, regression, integration, and UAT testing for multiple releases</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <div class="job-header">
+                        <h3 class="job-title">SDET / QA Automation Engineer</h3>
+                        <p class="company-name">Apexon (Client: Microsoft Teams)</p>
+                        <p class="duration">September 2023 - April 2025 | Bangalore, Karnataka</p>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Designed and built comprehensive automation frameworks using Java, Selenium WebDriver, Cucumber BDD, and Robot Framework achieving 95% automation coverage</li>
+                        <li>Implemented CI/CD pipelines using Jenkins and Azure DevOps, decreasing release cycle time by 30%</li>
+                        <li>Developed reusable Page Object Model (POM) components improving code maintainability and reusability</li>
+                        <li>Integrated automation suites into Azure Pipelines with parallel execution for faster feedback loops</li>
+                        <li>Performed cross-browser testing on Chrome, Firefox, Edge, and Safari ensuring consistent user experience</li>
+                        <li>Executed mobile automation testing using Appium on Android and iOS devices with ADB debugging</li>
+                        <li>Conducted mobile UI testing including device capability setup, parallel execution, and hybrid/native app validation</li>
+                        <li>Built internal automation tools: AI Test Case Generator, Stress Buzzer (API load testing), and Log-to-Excel Converter</li>
+                        <li>Created detailed test execution reports using Allure and Extent Reports for stakeholder visibility</li>
+                        <li>Awarded Client Trailblazer Award (Q3 2024) for automation innovation and quality engineering excellence</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2 class="section-title">Key Projects & Achievements</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">🤖</div>
+                    <h3>AI Test Case Generator</h3>
+                    <p>
+                        Developed an AI-powered tool that automatically generates comprehensive test cases from user stories 
+                        and requirements. Integrated seamlessly with Azure DevOps to streamline the test design workflow, 
+                        reducing manual test case creation time by 60%.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">⚡</div>
+                    <h3>Stress Buzzer Performance Tool</h3>
+                    <p>
+                        Created a custom API performance testing tool using Python and Apache JMeter for high-volume load 
+                        simulation. Successfully identified critical performance bottlenecks before production release, 
+                        supporting load testing up to 10,000 concurrent users.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">💬</div>
+                    <h3>Microsoft Teams QA Chatbot</h3>
+                    <p>
+                        Built an intelligent QA automation assistant integrated with Microsoft Teams that enables automated 
+                        test report distribution to team channels, real-time test status updates, and instant access to 
+                        test metrics, improving team collaboration and visibility.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="section">
+            <h2 class="section-title">Certifications</h2>
+            
+            <div class="certs-grid">
+                <div class="cert-card">
+                    <div class="cert-badge">🎓</div>
+                    <h3>Microsoft Certified</h3>
+                    <p>Azure DevOps Engineer Expert (AZ-400)</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-badge">🎓</div>
+                    <h3>Microsoft Certified</h3>
+                    <p>Azure Data Engineer Associate</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-badge">🎓</div>
+                    <h3>Certified Full Stack</h3>
+                    <p>Testing Professional</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-badge">🎓</div>
+                    <h3>Selenium WebDriver</h3>
+                    <p>with Java - Udemy</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-badge">🎓</div>
+                    <h3>API Testing</h3>
+                    <p>Automation Masterclass - Postman</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-card">
+                <h3 class="degree">Bachelor of Technology - Computer Science Engineering</h3>
+                <p class="institution">Vijaya Institute of Technology for Women, Affiliated to JNTUK</p>
+                <p class="duration">2020 - 2023</p>
+            </div>
+
+            <div class="education-card">
+                <h3 class="degree">Diploma - Computer Engineering</h3>
+                <p class="institution">KES Polytechnic College</p>
+                <p class="duration">2017 - 2020</p>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2 style="font-size: 2.5em; margin-bottom: 20px;">Let's Connect</h2>
+            <p style="font-size: 1.2em; max-width: 600px; margin: 0 auto;">
+                Open to opportunities in QA Engineering, SDET, Automation Testing, and Manual Testing roles
+            </p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3>📧 Email</h3>
+                    <a href="mailto:anithadamarla0313@gmail.com">anithadamarla0313@gmail.com</a>
+                </div>
+
+                <div class="contact-item">
+                    <h3>📱 Phone</h3>
+                    <a href="tel:+916305086819">+91-6305086819</a>
+                </div>
+
+                <div class="contact-item">
+                    <h3>💼 LinkedIn</h3>
+                    <a href="https://linkedin.com/in/anitha0313" target="_blank">linkedin.com/in/anitha0313</a>
+                </div>
+
+                <div class="contact-item">
+                    <h3>💻 GitHub</h3>
+                    <a href="https://github.com/Anitha-Arun" target="_blank">github.com/Anitha-Arun</a>
+                </div>
+            </div>
+
+            <div class="highlight" style="margin-top: 40px;">
+                <h3>Languages</h3>
+                <p style="color: #555;">English • Telugu • Hindi • Kannada</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p style="font-size: 1.1em; margin-bottom: 10px;">🏆 Client Trailblazer Award Winner (Q3 2024)</p>
+        <p style="color: #999;">© 2024 Anitha Damarla. All rights reserved.</p>
+    </footer>
+</body>
+</html>
